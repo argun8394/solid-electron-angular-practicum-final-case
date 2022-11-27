@@ -1,0 +1,15 @@
+<div class="container mt-5  col-md-12">
+  <div class="card-table text-center card col-md-3">
+    <div class="card-product">
+          <div *ngIf="productId !== undefined">
+            <div class="">
+              <img style="width: 120px" src="{{ productId.image }}" />
+              <h3>{{ productId.title }}</h3>
+              <p> {{ productId.description }}</p>
+              <span>Price:  ${{productId.price}}</span>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+

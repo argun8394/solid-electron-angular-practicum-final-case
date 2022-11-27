@@ -1,0 +1,73 @@
+<div class="card-top container-fluid">
+  <div class="container d-flex flex-row-reverse">
+    <div class="dropdown   mt-1 mb-1 ">
+      <button type="button" class="btn dropdown-toggle" id="book-dropdown" data-bs-toggle="dropdown">
+        Categories</button>
+      <ul class="dropdown-menu" aria-labelledby="book-dropdown">
+        <li><a class="dropdown-item" (click)="filter('')">
+            <h6>All Products</h6>
+          </a></li>
+        <li> <a class="dropdown-item" (click)="filter('electronics')">
+            <h6>Electronics</h6>
+          </a></li>
+        <li><a class="dropdown-item" (click)="filter('fashion')">
+            <h6>Fashion</h6>
+          </a></li>
+        <li>
+          <a class="dropdown-item" (click)="filter('jewelery')">
+            <h6>Jewllery</h6>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="row">
+    <ng-container *ngFor="let product of filterCategory | filter:searchKey:'title'" class="product">
+      <div class="card col-md-3">
+        <img src="{{ product.image }}" />
+
+        <h5 style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          ">
+          {{ product.title }}
+        </h5>
+        <p style="
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100ch;
+          ">
+          {{ product.description }}
+        </p>
+
+        <p><strong>Price: </strong>${{ product.price }}</p>
+
+        <div>
+          <button class="btn btn-primary me-2" (click)="buyProduct(product)">
+            AddToCart
+          </button>
+          <span></span>
+          <button class="btn btn-success"><a [routerLink]="['/detail',product.id]" >Details</a>
+
+          </button>
+        </div>
+        <div>
+
+        </div>
+
+      </div>
+
+    </ng-container>
+  </div>
+</div>
+<div>
+  <app-footer></app-footer>
+</div>
+

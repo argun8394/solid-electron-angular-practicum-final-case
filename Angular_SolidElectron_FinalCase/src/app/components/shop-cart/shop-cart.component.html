@@ -1,0 +1,59 @@
+
+<ng-container>
+  <div class="container">
+    <div class="card-table">
+      <div class="card-product">
+        <div class="table table-product">
+          <table class="table table-responsive">
+            <thead>
+              <tr>
+                <th>Sr.No</th>
+                <th>Product Name</th>
+                <th>Product Image</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>İncrease</th>
+                <th>Decrease</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let entry of cartEntries$ | async; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ entry.product.title }}</td>
+                <td>
+                  <img style="width: 120px" src="{{ entry.product.image }}" alt="" />
+                </td>
+                <td style="width: 25%">
+                  {{ entry.product.description }}}}}}}}
+                </td>
+                <td style="width: 12%">{{ entry.product.price }}</td>
+                <td style="width: 12%">{{ entry.count }}</td>
+                <td style="width: 12%">
+                  <div>
+                    <button class="btn btn-primary" (click)="increaseProduct(entry)"><i class="fa-sharp fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </td>
+                <td>
+                  <td>
+                    <button class="btn btn-danger" (click)="decreaseProduct(entry)"><i class="fas fa-trash-alt"></i></button>
+
+                </td>
+              </tr>
+               <tr>
+               <td colspan="4"></td>
+               <td><strong>Grand Total : ${{totalPrice$ | async}}</strong></td>
+              <td><button class="btn btn-danger" (click)="clearEntries()">Empty Cart</button></td>
+              <td><button routerLink="/products" class="btn btn-primary">Shop More</button></td>
+
+             </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+
+
